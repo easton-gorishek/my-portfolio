@@ -127,7 +127,6 @@ class Header extends PureComponent {
               <PageLink active={aboutPage && 'red'} onClick={this.scrollToAbout}>About</PageLink>
               <PageLink active={projectPage && 'red'} onClick={this.scrollToProjects}>Projects</PageLink>
               <PageLink active={contactPage && 'red'} onClick={this.scrollToContact}>Contact</PageLink>
-              <PageLink to='/blog'>Blog</PageLink>
             </ul>
           </nav>
         </div>
