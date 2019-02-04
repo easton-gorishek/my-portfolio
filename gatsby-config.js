@@ -1,7 +1,11 @@
 module.exports = {
   plugins: [
-    `gatsby-plugin-sass`,
-
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require('sass'),
+      },
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
