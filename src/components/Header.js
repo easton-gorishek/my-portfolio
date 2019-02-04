@@ -1,16 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'gatsby';
 import styles from './header.scss';
 
 const PageLink = props => (
   <li onClick={props.onClick} style={{ color: props.active }}>
-    {/* <Link
-      to={props.to}
-      style={{ color: props.active }}
-      replace
-    >
-      {props.children}
-    </Link> */}
     {props.children}
   </li>
 );
