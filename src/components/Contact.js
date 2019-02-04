@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './contact.scss';
+import styles from './contact.module.css';
 
 export default props => (
   <div className={styles.contact} id={props.id}>

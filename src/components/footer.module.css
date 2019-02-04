@@ -1,4 +1,4 @@
-:local(.footer) {
+.footer {
   display: flex;
   justify-content: center;
   background: black;

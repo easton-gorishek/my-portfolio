@@ -1,6 +1,7 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import './index.module.css';
 
+import Layout from '../components/Layout';
 import About from '../components/About';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';

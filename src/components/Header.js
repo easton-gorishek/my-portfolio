@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import styles from './header.scss';
+import styles from './header.module.css';
 
 const PageLink = props => (
-  <li onClick={props.onClick} style={{ color: props.active }}>
+  <li onClick={props.onClick} className={props.active}>
     {props.children}
   </li>
 );
@@ -111,14 +111,14 @@ class Header extends PureComponent {
 
     return (
       <header className={styles.header}>
-        <div className='header-content'>Header Content</div>
-        <div className={isFixed ? 'stick-nav' : null}>
+        <div className={styles.headerContent}>Header Content</div>
+        <div className={isFixed ? styles.stickNav : null}>
           <nav>
             <h1>Easton Gorishek</h1>
             <ul>
-              <PageLink active={aboutPage && 'red'} onClick={this.scrollToAbout}>About</PageLink>
-              <PageLink active={projectPage && 'red'} onClick={this.scrollToProjects}>Projects</PageLink>
-              <PageLink active={contactPage && 'red'} onClick={this.scrollToContact}>Contact</PageLink>
+              <PageLink active={aboutPage && styles.active} onClick={this.scrollToAbout}>About</PageLink>
+              <PageLink active={projectPage && styles.active} onClick={this.scrollToProjects}>Projects</PageLink>
+              <PageLink active={contactPage && styles.active} onClick={this.scrollToContact}>Contact</PageLink>
             </ul>
           </nav>
         </div>
