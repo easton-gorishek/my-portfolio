@@ -17,7 +17,6 @@ class Header extends PureComponent {
   state = {
     isFixed: false,
     navBarPos: 0,
-    navBar: document.querySelector('nav'),
     aboutPage: false,
     projectPage: false,
     contactPage: false,
