@@ -2,16 +2,15 @@ header {
   display: flex;
   flex-direction: column;
   height: 33vh;
-
 }
-  
-h1 {
+
+.myName {
+  display: none;
   font-family: 'Roboto';
-  margin-left: 20px; 
-  transition: all .2s ease-in-out;
+  margin-left: 40px; 
 }
 
-h1:hover {
+.display:hover {
   transform: scale(1.1);
 }
 
@@ -19,7 +18,7 @@ h1:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 100px;
+  font-size: 5em;
   height: 33vh;
   background: red;
 }
@@ -33,20 +32,20 @@ h1:hover {
 }
 
 nav {
-  height: 5vh;
+  height: 8vh;
   z-index: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
 ul {
   width: 33vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
-  margin-right: 20px;
+  margin-right: 40px;
 }
     
 li {
@@ -57,7 +56,32 @@ li:hover {
   cursor: pointer;
 }
 
-.active {
+a {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.active a {
   color: red;
-  transition-delay: 250ms;
+}
+
+@media screen and (max-width: 850px) {
+
+  .myName {
+    display: none;
+  }
+
+  nav {
+    height: 5vh;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+    width: 100vw;
+    margin: 0;
+    justify-content: space-around;
+  }
 }

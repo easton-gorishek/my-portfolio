@@ -1,9 +1,15 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'gatsby';
 import styles from './header.module.css';
 
 const PageLink = props => (
-  <li onClick={props.onClick} className={props.active}>
-    {props.children}
+  <li className={props.active}>
+    <Link
+      to={props.to}
+      activeStyle={{ color: 'red' }}
+    >
+      {props.children}
+    </Link>
   </li>
 );
 
@@ -11,39 +17,60 @@ class Header extends PureComponent {
   state = {
     isFixed: false,
     navBarPos: 0,
+    navBar: document.querySelector('nav'),
     aboutPage: false,
     projectPage: false,
-    contactPage: false
+    contactPage: false,
   };
-
-  scrollToProjects = () => {
-    const projectSection = document.getElementById('projects');
-    projectSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  scrollToAbout = () => {
-    const projectSection = document.getElementById('about');
-    projectSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  scrollToContact = () => {
-    const projectSection = document.getElementById('contact');
-    projectSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
 
   fixNav = () => {
     const { isFixed, navBarPos } = this.state;
-    const windowPos = window.scrollY;
-    const navBar = document.querySelector('nav').offsetTop;
 
-    if(navBar > navBarPos) {
-      this.setState({ navBarPos: navBar });
+    const windowPos = window.scrollY;
+    const navBar = document.querySelector('nav');
+    const navBarOffSet = navBar.offsetTop;
+    const myName = document.querySelector('.' + styles.myName);
+
+    if(navBarOffSet > navBarPos) {
+      this.setState({ navBarPos: navBarOffSet });
     }
-    if(navBar - windowPos <= 0 && !isFixed) {
+    if((navBarOffSet - windowPos) <= 0 && !isFixed) {
       this.setState({ isFixed: true });
+      if(window.innerWidth > 850) {
+        myName.style.display = 'block';
+        myName.animate([
+          { transform: 'translateX(-100%)' },
+          { transform: 'initial' }
+        ], {
+          duration: 500,
+          easing: 'linear'
+        });
+        navBar.style.justifyContent = 'space-between';
+      }
     }
     else if(windowPos <= navBarPos && isFixed) {
       this.setState({ isFixed: false });
+      myName.animate([
+        { transform: 'initial' },
+        { transform: 'translateX(-150%)' }
+      ], {
+        duration: 500,
+        easing: 'linear'
+      });
+      setTimeout(() => {
+        myName.style.display = 'none';
+        navBar.style.justifyContent = 'flex-end';
+      }, 500);
+    }
+  }
+
+  navBar = () => {
+    const navBar = document.querySelector('nav');
+    const myName = document.querySelector('.' + styles.myName);
+
+    if(window.innerWidth < 850) {
+      myName.style.display = 'none';
+      navBar.style.justifyContent = 'flex-end';
     }
   }
 
@@ -54,12 +81,13 @@ class Header extends PureComponent {
       contactPage,
     } = this.state;
 
-    const windowPos = window.scrollY;
     const aboutOffset = document.getElementById('about').offsetTop;
     const projectOffset = document.getElementById('projects').offsetTop;
     const contactOffset = document.getElementById('contact').offsetTop;
-    const navBarHeight = document.querySelector('nav').clientHeight;
-    const navBarPos = document.querySelector('nav').offsetTop;
+    const windowPos = window.scrollY;
+    const navBar = document.querySelector('nav');
+    const navBarHeight = navBar.clientHeight;
+    const navBarPos = navBar.offsetTop;
 
     const aboutPosition = (aboutOffset - navBarHeight) - windowPos;
     const projectPosition = (projectOffset - navBarHeight) - windowPos;
@@ -97,8 +125,17 @@ class Header extends PureComponent {
   }
 
   componentDidMount() {
+    if(window.location.pathname !== '/blog') {
+      window.addEventListener('scroll', this.currentPage);
+    }
     window.addEventListener('scroll', this.fixNav);
-    window.addEventListener('scroll', this.currentPage);
+    window.addEventListener('resize', this.navBar);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.currentPage);
+    window.removeEventListener('scroll', this.fixNav);
+    window.removeEventListener('resize', this.navBar);
   }
 
   render() {
@@ -114,11 +151,31 @@ class Header extends PureComponent {
         <div className={styles.headerContent}>Header Content</div>
         <div className={isFixed ? styles.stickNav : null}>
           <nav>
-            <h1>Easton Gorishek</h1>
+            <h1 className={styles.myName}>Easton Gorishek</h1>
             <ul>
-              <PageLink active={aboutPage && styles.active} onClick={this.scrollToAbout}>About</PageLink>
-              <PageLink active={projectPage && styles.active} onClick={this.scrollToProjects}>Projects</PageLink>
-              <PageLink active={contactPage && styles.active} onClick={this.scrollToContact}>Contact</PageLink>
+              <PageLink
+                active={aboutPage ? styles.active : null}
+                to="/#about"
+              >
+               About
+              </PageLink>
+              <PageLink
+                active={projectPage ? styles.active : null}
+                to="/#projects"
+              >
+                Projects
+              </PageLink>
+              <PageLink
+                active={contactPage ? styles.active : null}
+                to="/#contact"
+              >
+                Contact
+              </PageLink>
+              <PageLink
+                to="/blog"
+              >
+                Blog
+              </PageLink>
             </ul>
           </nav>
         </div>
