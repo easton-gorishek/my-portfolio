@@ -16,7 +16,6 @@ const PageLink = props => (
 class Header extends PureComponent {
   state = {
     isFixed: false,
-    navBarPos: 0,
     aboutPage: false,
     projectPage: false,
     contactPage: false,
@@ -24,17 +23,16 @@ class Header extends PureComponent {
   };
 
   fixNav = () => {
-    const { isFixed, navBarPos } = this.state;
+    const { isFixed } = this.state;
 
-    const windowPos = window.scrollY;
     const navBar = document.querySelector('nav');
-    const navBarOffSet = navBar.offsetTop;
+    const navBarRect = navBar.getBoundingClientRect();
+    const header = document.querySelector('header');
+    const headerRect = header.getBoundingClientRect();
+
     const myName = document.querySelector('h1');
 
-    if(navBarOffSet > navBarPos) {
-      this.setState({ navBarPos: navBarOffSet });
-    }
-    if((navBarOffSet - windowPos) < 0 && !isFixed) {
+    if((navBarRect.top <= 0) && !isFixed) {
       this.setState({
         isFixed: true,
         myName: 'myName'
@@ -44,21 +42,21 @@ class Header extends PureComponent {
         navBar.style.justifyContent = 'space-between';
       }
     }
-    else if(windowPos < navBarPos && isFixed) {
-      this.setState({
-        isFixed: false,
-        myName: 'myNameOut'
-      });
+    else if((headerRect.bottom >= navBarRect.bottom) && isFixed) {
+      this.setState({ isFixed: false });
+    }
+    else if(headerRect.top === 0) {
+      this.setState({ myName: 'myNameOut' });
       setTimeout(() => {
         myName.style.display = 'none';
         navBar.style.justifyContent = 'flex-end';
-      }, 500);
+      }, 250);
     }
   }
 
-  navBar = () => {
+  mobileNavBar = () => {
     const navBar = document.querySelector('nav');
-    const myName = document.querySelector('.' + styles.myName);
+    const myName = document.querySelector('h1');
 
     if(window.innerWidth < 850) {
       myName.style.display = 'none';
@@ -73,10 +71,10 @@ class Header extends PureComponent {
       contactPage,
     } = this.state;
 
+    const windowPos = window.scrollY;
     const aboutOffset = document.getElementById('about').offsetTop;
     const projectOffset = document.getElementById('projects').offsetTop;
     const contactOffset = document.getElementById('contact').offsetTop;
-    const windowPos = window.scrollY;
     const navBar = document.querySelector('nav');
     const navBarHeight = navBar.clientHeight;
     const navBarPos = navBar.offsetTop;
@@ -93,14 +91,14 @@ class Header extends PureComponent {
       });
     }
 
-    if((aboutPosition < 0 && !aboutPage) && projectPosition > 0) {
+    if((aboutPosition < 0 && !aboutPage) && (projectPosition > 0)) {
       this.setState({
         aboutPage: !aboutPage,
         projectPage: false,
         contactPage: false
       });
     }
-    if((projectPosition < 0 && !projectPage) && contactPosition > 0) {
+    if((projectPosition < 0 && !projectPage) && (contactPosition > 0)) {
       this.setState({
         projectPage: !projectPage,
         aboutPage: false,
@@ -121,13 +119,13 @@ class Header extends PureComponent {
       window.addEventListener('scroll', this.currentPage);
     }
     window.addEventListener('scroll', this.fixNav);
-    window.addEventListener('resize', this.navBar);
+    window.addEventListener('resize', this.mobileNavBar);
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.currentPage);
     window.removeEventListener('scroll', this.fixNav);
-    window.removeEventListener('resize', this.navBar);
+    window.removeEventListener('resize', this.mobileNavBar);
   }
 
   render() {

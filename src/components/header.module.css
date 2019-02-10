@@ -4,22 +4,18 @@ header {
   height: 33vh;
 }
 
-h1 {
-  display: none;
-}
-
 .myName {
-  display: 'none';
   font-family: 'Roboto';
-  animation: slidein 0.5s linear;
-  -webkit-animation: slidein 0.5s linear;
+  display: none;
+  animation: slidein 0.25s linear;
+  -webkit-animation: slidein 0.25s linear;
   margin-left: 40px; 
 }
 
 .myNameOut {
   font-family: 'Roboto';
-  animation: slideout 0.5s linear;
-  -webkit-animation: slideout 0.5s linear;
+  animation: slideout 0.25s linear;
+  -webkit-animation: slideout 0.25s linear;
   margin-left: 40px;
 }
 
