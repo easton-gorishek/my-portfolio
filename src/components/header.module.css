@@ -4,10 +4,23 @@ header {
   height: 33vh;
 }
 
-.myName {
+h1 {
   display: none;
+}
+
+.myName {
+  display: 'none';
   font-family: 'Roboto';
+  animation: slidein 0.5s linear;
+  -webkit-animation: slidein 0.5s linear;
   margin-left: 40px; 
+}
+
+.myNameOut {
+  font-family: 'Roboto';
+  animation: slideout 0.5s linear;
+  -webkit-animation: slideout 0.5s linear;
+  margin-left: 40px;
 }
 
 .display:hover {
@@ -83,5 +96,41 @@ a {
     width: 100vw;
     margin: 0;
     justify-content: space-around;
+  }
+}
+
+@-webkit-keyframes slidein {
+  from {
+    transform: translateX(-100%)
+  }
+  to {
+    transform: 'initial';
+  }
+}
+
+@-webkit-keyframes slideout {
+  from {
+    transform: 'initial'
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%)
+  }
+  to {
+    transform: 'initial';
+  }
+}
+
+@keyframes slideout {
+  from {
+    transform: 'initial'
+  }
+  to {
+    transform: translateX(-100%);
   }
 }

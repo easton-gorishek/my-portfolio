@@ -20,6 +20,7 @@ class Header extends PureComponent {
     aboutPage: false,
     projectPage: false,
     contactPage: false,
+    myName: 'myName'
   };
 
   fixNav = () => {
@@ -28,33 +29,25 @@ class Header extends PureComponent {
     const windowPos = window.scrollY;
     const navBar = document.querySelector('nav');
     const navBarOffSet = navBar.offsetTop;
-    const myName = document.querySelector('.' + styles.myName);
+    const myName = document.querySelector('h1');
 
     if(navBarOffSet > navBarPos) {
       this.setState({ navBarPos: navBarOffSet });
     }
-    if((navBarOffSet - windowPos) <= 0 && !isFixed) {
-      this.setState({ isFixed: true });
+    if((navBarOffSet - windowPos) < 0 && !isFixed) {
+      this.setState({
+        isFixed: true,
+        myName: 'myName'
+      });
       if(window.innerWidth > 850) {
         myName.style.display = 'block';
-        myName.animate([
-          { transform: 'translateX(-100%)' },
-          { transform: 'initial' }
-        ], {
-          duration: 500,
-          easing: 'linear'
-        });
         navBar.style.justifyContent = 'space-between';
       }
     }
-    else if(windowPos <= navBarPos && isFixed) {
-      this.setState({ isFixed: false });
-      myName.animate([
-        { transform: 'initial' },
-        { transform: 'translateX(-150%)' }
-      ], {
-        duration: 500,
-        easing: 'linear'
+    else if(windowPos < navBarPos && isFixed) {
+      this.setState({
+        isFixed: false,
+        myName: 'myNameOut'
       });
       setTimeout(() => {
         myName.style.display = 'none';
@@ -100,21 +93,21 @@ class Header extends PureComponent {
       });
     }
 
-    if((aboutPosition <= 0 && !aboutPage) && projectPosition > 0) {
+    if((aboutPosition < 0 && !aboutPage) && projectPosition > 0) {
       this.setState({
         aboutPage: !aboutPage,
         projectPage: false,
         contactPage: false
       });
     }
-    if((projectPosition <= 0 && !projectPage) && contactPosition > 0) {
+    if((projectPosition < 0 && !projectPage) && contactPosition > 0) {
       this.setState({
         projectPage: !projectPage,
         aboutPage: false,
         contactPage: false
       });
     }
-    if(contactPosition <= 0 && !contactPage) {
+    if(contactPosition < 0 && !contactPage) {
       this.setState({
         contactPage: !contactPage,
         projectPage: false,
@@ -142,7 +135,8 @@ class Header extends PureComponent {
       isFixed,
       aboutPage,
       projectPage,
-      contactPage
+      contactPage,
+      myName
     } = this.state;
 
     return (
@@ -150,7 +144,7 @@ class Header extends PureComponent {
         <div className={styles.headerContent}>Header Content</div>
         <div className={isFixed ? styles.stickNav : null}>
           <nav>
-            <h1 className={styles.myName}>Easton Gorishek</h1>
+            <h1 className={styles[myName]}>Easton Gorishek</h1>
             <ul>
               <PageLink
                 active={aboutPage ? styles.active : null}
