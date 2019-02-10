@@ -6,5 +6,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 100px;
+  font-size: 4em;
+}
+
+.projects p {
+  text-align: center;
 }

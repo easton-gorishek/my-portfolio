@@ -7,15 +7,15 @@ header {
 .myName {
   font-family: 'Roboto';
   display: none;
-  animation: slidein 0.25s linear;
-  -webkit-animation: slidein 0.25s linear;
+  animation: slidein 0.5s linear;
+  -webkit-animation: slidein 0.5s linear;
   margin-left: 40px; 
 }
 
 .myNameOut {
   font-family: 'Roboto';
-  animation: slideout 0.25s linear;
-  -webkit-animation: slideout 0.25s linear;
+  animation: slideout 0.5s linear;
+  -webkit-animation: slideout 0.5s linear;
   margin-left: 40px;
 }
 
@@ -27,9 +27,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 5em;
+  font-size: 4em;
   height: 33vh;
   background: red;
+}
+
+.headerContent p {
+  text-align: center;
 }
 
 .stickNav {
@@ -42,6 +46,7 @@ header {
 
 nav {
   height: 8vh;
+  padding: 3px;
   z-index: 1;
   display: flex;
   justify-content: flex-end;
@@ -115,7 +120,7 @@ a {
 
 @keyframes slidein {
   from {
-    transform: translateX(-100%)
+    transform: translateX(-200%)
   }
   to {
     transform: 'initial';
@@ -127,6 +132,6 @@ a {
     transform: 'initial'
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-200%);
   }
 }

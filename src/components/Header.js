@@ -19,7 +19,8 @@ class Header extends PureComponent {
     aboutPage: false,
     projectPage: false,
     contactPage: false,
-    myName: 'myName'
+    myName: 'myName',
+    pathname: '/'
   };
 
   fixNav = () => {
@@ -29,7 +30,6 @@ class Header extends PureComponent {
     const navBarRect = navBar.getBoundingClientRect();
     const header = document.querySelector('header');
     const headerRect = header.getBoundingClientRect();
-
     const myName = document.querySelector('h1');
 
     if((navBarRect.top <= 0) && !isFixed) {
@@ -46,11 +46,13 @@ class Header extends PureComponent {
       this.setState({ isFixed: false });
     }
     else if(headerRect.top === 0) {
-      this.setState({ myName: 'myNameOut' });
-      setTimeout(() => {
-        myName.style.display = 'none';
-        navBar.style.justifyContent = 'flex-end';
-      }, 250);
+      if(window.innerWidth > 850) {
+        this.setState({ myName: 'myNameOut' });
+        setTimeout(() => {
+          myName.style.display = 'none';
+          navBar.style.justifyContent = 'flex-end';
+        }, 500);
+      }
     }
   }
 
@@ -118,14 +120,25 @@ class Header extends PureComponent {
     if(window.location.pathname !== '/blog') {
       window.addEventListener('scroll', this.currentPage);
     }
-    window.addEventListener('scroll', this.fixNav);
     window.addEventListener('resize', this.mobileNavBar);
+    window.addEventListener('scroll', this.fixNav);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.currentPage);
-    window.removeEventListener('scroll', this.fixNav);
     window.removeEventListener('resize', this.mobileNavBar);
+    window.removeEventListener('scroll', this.fixNav);
+    window.removeEventListener('scroll', this.currentPage);
+  }
+
+  componentDidUpdate() {
+    const { pathname } = this.state;
+    const currentPath = window.location.pathname;
+    if((currentPath === '/blog') && (pathname !== '/blog')) {
+      this.setState({
+        pathname: currentPath,
+        myName: 'myName'
+      });
+    }
   }
 
   render() {
@@ -139,7 +152,9 @@ class Header extends PureComponent {
 
     return (
       <header className={styles.header}>
-        <div className={styles.headerContent}>Header Content</div>
+        <div className={styles.headerContent}>
+          <p>Header Content</p>
+        </div>
         <div className={isFixed ? styles.stickNav : null}>
           <nav>
             <h1 className={styles[myName]}>Easton Gorishek</h1>
