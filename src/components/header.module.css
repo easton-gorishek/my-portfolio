@@ -4,19 +4,24 @@ header {
   height: 33vh;
 }
 
+h1 {
+  visibility: hidden;
+}
+
 .myName {
   font-family: 'Roboto';
-  display: none;
-  animation: slidein 0.5s linear;
-  -webkit-animation: slidein 0.5s linear;
+  animation: slidein 0.5s ease;
+  -webkit-animation: slidein 0.5s ease;
   margin-left: 40px; 
+  color: #7dce94;
 }
 
 .myNameOut {
   font-family: 'Roboto';
-  animation: slideout 0.5s linear;
-  -webkit-animation: slideout 0.5s linear;
+  animation: slideout 0.5s ease;
+  -webkit-animation: slideout 0.5s ease;
   margin-left: 40px;
+  color: #7dce94;
 }
 
 .display:hover {
@@ -29,18 +34,26 @@ header {
   align-items: center;
   font-size: 4em;
   height: 33vh;
-  background: red;
+  background: #272727;
+  color: white;
 }
 
 .headerContent p {
   text-align: center;
+  border: 1px solid white;
+  padding: 20px;
+}
+
+.blinking-cursor {
+  border: 1px solid white;
+
 }
 
 .stickNav {
   position: fixed;
   width: 100%;
   top: 0;
-  background: white;
+  background: #272727;
 
 }
 
@@ -51,6 +64,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background: #272727;
 }
 
 ul {
@@ -73,15 +87,18 @@ li:hover {
 a {
   text-decoration: none;
   font-size: 20px;
+  color: #f6f5f3;
 }
 
 .active a {
-  color: red;
+  color: #7dce94;
+  border-bottom: 1px solid #7dce94;
 }
 
 @media screen and (max-width: 850px) {
 
-  .myName {
+
+  .myName, h1 {
     display: none;
   }
 
@@ -91,6 +108,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #272727;
   }
 
   ul {
@@ -135,3 +153,5 @@ a {
     transform: translateX(-200%);
   }
 }
+
+

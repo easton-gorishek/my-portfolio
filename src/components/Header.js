@@ -6,7 +6,7 @@ const PageLink = props => (
   <li className={props.active}>
     <Link
       to={props.to}
-      activeStyle={{ color: 'red' }}
+      activeStyle={{ color: '#7dce94' }}
     >
       {props.children}
     </Link>
@@ -19,7 +19,7 @@ class Header extends PureComponent {
     aboutPage: false,
     projectPage: false,
     contactPage: false,
-    myName: 'myName',
+    myName: null,
     pathname: '/'
   };
 
@@ -38,21 +38,20 @@ class Header extends PureComponent {
         myName: 'myName'
       });
       if(window.innerWidth > 850) {
-        myName.style.display = 'block';
+        myName.style.visibility = 'visible';
         navBar.style.justifyContent = 'space-between';
       }
     }
-    else if((headerRect.bottom >= navBarRect.bottom) && isFixed) {
+    if((headerRect.bottom >= navBarRect.bottom) && isFixed) {
       this.setState({ isFixed: false });
     }
-    else if(headerRect.top === 0) {
-      if(window.innerWidth > 850) {
-        this.setState({ myName: 'myNameOut' });
-        setTimeout(() => {
-          myName.style.display = 'none';
-          navBar.style.justifyContent = 'flex-end';
-        }, 500);
-      }
+    if((headerRect.top === 0) && window.innerWidth > 850) {
+      console.log('in header clause');
+      this.setState({ myName: 'myNameOut' });
+      setTimeout(() => {
+        myName.style.visibility = 'hidden';
+        navBar.style.justifyContent = 'space-between';
+      }, 500);
     }
   }
 
@@ -62,7 +61,11 @@ class Header extends PureComponent {
 
     if(window.innerWidth < 850) {
       myName.style.display = 'none';
-      navBar.style.justifyContent = 'flex-end';
+      navBar.style.justifyContent = 'center';
+    }
+    else {
+      myName.style.display = 'block';
+      navBar.style.justifyContent = 'space-between';
     }
   }
 
@@ -153,34 +156,34 @@ class Header extends PureComponent {
     return (
       <header className={styles.header}>
         <div className={styles.headerContent}>
-          <p>Header Content</p>
+          <p>Hi, I'm Easton.</p>
         </div>
         <div className={isFixed ? styles.stickNav : null}>
           <nav>
-            <h1 className={styles[myName]}>Easton Gorishek</h1>
+            <h1 className={styles[myName]}>easton-gorishek</h1>
             <ul>
               <PageLink
                 active={aboutPage ? styles.active : null}
                 to="/#about"
               >
-               About
+               ABOUT
               </PageLink>
               <PageLink
                 active={projectPage ? styles.active : null}
                 to="/#projects"
               >
-                Projects
+                PROJECTS
               </PageLink>
               <PageLink
                 active={contactPage ? styles.active : null}
                 to="/#contact"
               >
-                Contact
+                CONTACT
               </PageLink>
               <PageLink
                 to="/blog"
               >
-                Blog
+                BLOG
               </PageLink>
             </ul>
           </nav>
