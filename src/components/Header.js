@@ -1,196 +1,107 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'gatsby';
+import Navigation from './Navigation.js';
 import styles from './header.module.css';
 
-const PageLink = props => (
+const MenuOption = props => (
   <li className={props.active}>
-    <Link
-      to={props.to}
-      activeStyle={{ color: '#7dce94' }}
+    <a
+      href={props.to}
+      onClick={props.onClick}
+      className={props.active}
     >
       {props.children}
-    </Link>
+    </a>
   </li>
 );
 
 class Header extends PureComponent {
   state = {
-    isFixed: false,
-    aboutPage: false,
-    projectPage: false,
-    contactPage: false,
-    myName: null,
-    pathname: '/'
-  };
-
-  fixNav = () => {
-    const { isFixed } = this.state;
-
-    const navBar = document.querySelector('nav');
-    const navBarRect = navBar.getBoundingClientRect();
-    const header = document.querySelector('header');
-    const headerRect = header.getBoundingClientRect();
-    const myName = document.querySelector('h1');
-
-    if((navBarRect.top <= 0) && !isFixed) {
-      this.setState({
-        isFixed: true,
-        myName: 'myName'
-      });
-      if(window.innerWidth > 850) {
-        myName.style.visibility = 'visible';
-        navBar.style.justifyContent = 'space-between';
-      }
-    }
-    if((headerRect.bottom >= navBarRect.bottom) && isFixed) {
-      this.setState({ isFixed: false });
-    }
-    if((headerRect.top === 0) && window.innerWidth > 850) {
-      console.log('in header clause');
-      this.setState({ myName: 'myNameOut' });
-      setTimeout(() => {
-        myName.style.visibility = 'hidden';
-        navBar.style.justifyContent = 'space-between';
-      }, 500);
-    }
-  }
-
-  mobileNavBar = () => {
-    const navBar = document.querySelector('nav');
-    const myName = document.querySelector('h1');
-
-    if(window.innerWidth < 850) {
-      myName.style.display = 'none';
-      navBar.style.justifyContent = 'center';
-    }
-    else {
-      myName.style.display = 'block';
-      navBar.style.justifyContent = 'space-between';
-    }
-  }
-
-  currentPage = () => {
-    const {
-      aboutPage,
-      projectPage,
-      contactPage,
-    } = this.state;
-
-    const windowPos = window.scrollY;
-    const aboutOffset = document.getElementById('about').offsetTop;
-    const projectOffset = document.getElementById('projects').offsetTop;
-    const contactOffset = document.getElementById('contact').offsetTop;
-    const navBar = document.querySelector('nav');
-    const navBarHeight = navBar.clientHeight;
-    const navBarPos = navBar.offsetTop;
-
-    const aboutPosition = (aboutOffset - navBarHeight) - windowPos;
-    const projectPosition = (projectOffset - navBarHeight) - windowPos;
-    const contactPosition = (contactOffset - navBarHeight) - windowPos;
-
-    if(windowPos < navBarPos) {
-      this.setState({
-        aboutPage: false,
-        projectPage: false,
-        contactPage: false
-      });
-    }
-
-    if((aboutPosition < 0 && !aboutPage) && (projectPosition > 0)) {
-      this.setState({
-        aboutPage: !aboutPage,
-        projectPage: false,
-        contactPage: false
-      });
-    }
-    if((projectPosition < 0 && !projectPage) && (contactPosition > 0)) {
-      this.setState({
-        projectPage: !projectPage,
-        aboutPage: false,
-        contactPage: false
-      });
-    }
-    if(contactPosition < 0 && !contactPage) {
-      this.setState({
-        contactPage: !contactPage,
-        projectPage: false,
-        aboutPage: false
-      });
-    }
+    menu: false
   }
 
   componentDidMount() {
-    if(window.location.pathname !== '/blog') {
-      window.addEventListener('scroll', this.currentPage);
-    }
-    window.addEventListener('resize', this.mobileNavBar);
-    window.addEventListener('scroll', this.fixNav);
+    window.addEventListener('resize', this.checkViewport);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.mobileNavBar);
-    window.removeEventListener('scroll', this.fixNav);
-    window.removeEventListener('scroll', this.currentPage);
+  toggleMenu = () => {
+    const { menu } = this.state;
+    this.setState({ menu: !menu }, this.updateScroll);
   }
 
-  componentDidUpdate() {
-    const { pathname } = this.state;
-    const currentPath = window.location.pathname;
-    if((currentPath === '/blog') && (pathname !== '/blog')) {
-      this.setState({
-        pathname: currentPath,
-        myName: 'myName'
-      });
+  updateScroll = () => {
+    const { menu } = this.state;
+    const body = document.querySelector('body');
+
+    if(menu) {
+      body.style.overflowY = 'hidden';
     }
+    else {
+      body.style.overflowY = 'visible';
+    }
+  }
+
+  checkViewport = () => {
+    const windowSize = window.innerWidth;
+    const body = document.querySelector('body');
+    if(windowSize > 850) {
+      this.setState({ menu: false });
+    }
+    body.style.overflowY = 'visible';
   }
 
   render() {
-    const {
-      isFixed,
-      aboutPage,
-      projectPage,
-      contactPage,
-      myName
-    } = this.state;
+    const { menu } = this.state;
+    const { pages } = this.props;
 
     return (
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <p>Hi, I'm Easton.</p>
-        </div>
-        <div className={isFixed ? styles.stickNav : null}>
-          <nav>
-            <h1 className={styles[myName]}>easton-gorishek</h1>
-            <ul>
-              <PageLink
-                active={aboutPage ? styles.active : null}
+      <div id="header" className={styles.headerWrapper}>
+        <header className={styles.header}>
+          <div>
+            <p></p>
+          </div>
+          <Navigation
+            pages={pages}
+            toggleMenu={this.toggleMenu}
+          />
+        </header>
+        <section
+          className={menu ? styles.menuOpen : styles.menuClosed}
+          id="mobile-menu"
+        >
+          {menu &&
+            <ul className={styles.menu}>
+              <MenuOption
+                onClick={this.toggleMenu}
                 to="/#about"
+                active={pages.about ? styles.active : null}
               >
-               ABOUT
-              </PageLink>
-              <PageLink
-                active={projectPage ? styles.active : null}
+                ABOUT
+              </MenuOption>
+              <MenuOption
+                onClick={this.toggleMenu}
                 to="/#projects"
+                active={pages.projects ? styles.active : null}
               >
                 PROJECTS
-              </PageLink>
-              <PageLink
-                active={contactPage ? styles.active : null}
+              </MenuOption>
+              <MenuOption
+                onClick={this.toggleMenu}
                 to="/#contact"
+                active={pages.contact ? styles.active : null}
               >
                 CONTACT
-              </PageLink>
-              <PageLink
+              </MenuOption>
+              <MenuOption
                 to="/blog"
               >
                 BLOG
-              </PageLink>
+              </MenuOption>
             </ul>
-          </nav>
-        </div>
-      </header>
+          }
+        </section>
+      </div>
     );
   }
-}
+};
 
 export default Header;

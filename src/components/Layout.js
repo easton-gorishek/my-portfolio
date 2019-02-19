@@ -1,13 +1,93 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import styles from './layout.module.css';
 
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header.js';
+import Footer from './Footer.js';
 
-export default ({ children }) => (
-  <div className={styles.layout}>
-    <Header />
-    {children}
-    <Footer />
-  </div>
-);
+class Layout extends PureComponent {
+  state = {
+    pages: {
+      about: false,
+      projects: false,
+      contact: false
+    }
+  }
+
+  componentDidMount() {
+    if(window.location.pathname !== '/blog') {
+      window.addEventListener('scroll', this.currentPage);
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.currentPage);
+  }
+
+  currentPage = () => {
+    const { pages } = this.state;
+
+    if(window.location.pathname !== '/blog') {
+      const aboutPage = document.getElementById('about').getBoundingClientRect();
+      const projectsPage = document.getElementById('projects').getBoundingClientRect();
+      const contactPage = document.getElementById('contact').getBoundingClientRect();
+      const navBar = document.querySelector('nav').getBoundingClientRect();
+
+      const aboutPosition = aboutPage.top - navBar.height;
+      const projectsPosition = projectsPage.top - navBar.height;
+      const contactPosition = contactPage.top - navBar.height;
+
+      if(navBar.top > 0 && (pages.about || pages.projects || pages.contact)) {
+        this.setState({
+          pages: {
+            about: false,
+            projects: false,
+            contact: false
+          }
+        });
+      }
+
+      if((aboutPosition <= 0 && !pages.about) && (projectsPosition > 0)) {
+        this.setState({
+          pages: {
+            about: true,
+            projects: false,
+            contact: false
+          }
+        });
+      }
+      if((projectsPosition <= 0 && !pages.projects) && (contactPosition > 0)) {
+        this.setState({
+          pages: {
+            about: false,
+            projects: true,
+            contact: false
+          }
+        });
+      }
+      if(contactPosition <= 0 && !pages.contact) {
+        this.setState({
+          pages: {
+            about: false,
+            projects: false,
+            contact: true
+          }
+        });
+      }
+    };
+  }
+
+  render() {
+    const { children } = this.props;
+    const { pages } = this.state;
+
+    return (
+      <div className={styles.layout}>
+        <Header pages={pages}/>
+        {children}
+        <Footer />
+      </div>
+    );
+  }
+}
+
+export default Layout;
