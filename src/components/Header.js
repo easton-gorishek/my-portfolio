@@ -42,10 +42,16 @@ class Header extends PureComponent {
     if(menu) {
       body.style.overflowY = 'hidden';
       body.style.position = 'relative';
+      document.ontouchmove = e => {
+        e.preventDefault();
+      };
     }
     else {
       body.style.overflowY = 'visible';
       body.style.position = 'initial';
+      document.ontouchmove = e => {
+        return true;
+      };
     }
   }
 

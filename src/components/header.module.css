@@ -32,10 +32,9 @@ header {
   .menuOpen {
     position: fixed;
     top: 75px;
-    height: 90vh;
+    height: 100%;
     width: 100vw;
     transition: 0.5s;
-    overflow-y: hidden;
     z-index: 1;
     background: black;
   }
