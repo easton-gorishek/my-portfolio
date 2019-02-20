@@ -30,31 +30,37 @@ class Header extends PureComponent {
 
   updateScroll = () => {
     const { menu } = this.state;
-    const html = document.querySelector('html');
     const body = document.querySelector('body');
 
     if(menu) {
-      html.style.overflowY = 'hidden';
       body.style.overflowY = 'hidden';
       body.style.position = 'relative';
+      document.ontouchmove = e => {
+        e.preventDefault();
+      };
     }
     else {
-      html.style.overflowY = 'hidden';
       body.style.overflowY = 'visible';
       body.style.position = 'initial';
+      document.ontouchmove = e => {
+        return true;
+      };
     }
   }
 
   checkViewport = () => {
     const windowSize = window.innerWidth;
-    const html = document.querySelector('html');
     const body = document.querySelector('body');
+
     if(windowSize > 850) {
       this.setState({ menu: false });
     }
-    html.style.overflowY = 'visible';
+
     body.style.overflowY = 'visible';
     body.style.position = 'initial';
+    document.ontouchmove = e => {
+      return true;
+    };
   }
 
   render() {
