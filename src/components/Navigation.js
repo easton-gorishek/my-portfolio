@@ -20,35 +20,33 @@ class Navigation extends PureComponent {
 
     return (
       <nav className={styles.navigation}>
-        <section>
-          <h1>Easton Gorishek</h1>
-          <ul className={styles.desktop}>
-            <PageLink
-              to="/#about"
-              active={pages.about ? styles.active : null}
-            >
-              ABOUT
-            </PageLink>
-            <PageLink
-              to="/#projects"
-              active={pages.projects ? styles.active : null}
-            >
-              PROJECTS
-            </PageLink>
-            <PageLink
-              to="/#contact"
-              active={pages.contact ? styles.active : null}
-            >
-              CONTACT
-            </PageLink>
-            <PageLink
-              to="/blog"
-            >
-              BLOG
-            </PageLink>
-          </ul>
-          <button onClick={toggleMenu}>&#9776;</button>
-        </section>
+        <h1>Easton Gorishek</h1>
+        <ul className={styles.desktop}>
+          <PageLink
+            to="/#about"
+            active={pages.about ? styles.active : null}
+          >
+            ABOUT
+          </PageLink>
+          <PageLink
+            to="/#projects"
+            active={pages.projects ? styles.active : null}
+          >
+            PROJECTS
+          </PageLink>
+          <PageLink
+            to="/#contact"
+            active={pages.contact ? styles.active : null}
+          >
+            CONTACT
+          </PageLink>
+          <PageLink
+            to="/blog"
+          >
+            BLOG
+          </PageLink>
+        </ul>
+        <button onClick={toggleMenu}>&#9776;</button>
       </nav>
     );
   }

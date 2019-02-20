@@ -16,19 +16,26 @@ const MenuOption = props => (
 
 class Header extends PureComponent {
   state = {
-    menu: false
+    menu: false,
+    navFixed: false
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.checkViewport);
+    window.addEventListener('scroll', this.fixNav);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.fixNav);
+    window.removeEventListener('resize', this.checkViewport);
   }
 
   toggleMenu = () => {
     const { menu } = this.state;
-    this.setState({ menu: !menu }, this.updateScroll);
+    this.setState({ menu: !menu }, this.toggleScroll);
   }
 
-  updateScroll = () => {
+  toggleScroll = () => {
     const { menu } = this.state;
     const body = document.querySelector('body');
 
@@ -63,57 +70,70 @@ class Header extends PureComponent {
     };
   }
 
+  fixNav = () => {
+    const { navFixed } = this.state;
+
+    const navBar = document.querySelector('nav');
+    const navBarPos = navBar.getBoundingClientRect();
+    const header = document.querySelector('header');
+    const headerPos = header.getBoundingClientRect();
+
+    if(navBarPos.top <= 0 && !navFixed) {
+      this.setState({ navFixed: !navFixed });
+    }
+    if(headerPos.bottom >= navBarPos.bottom && navFixed) {
+      this.setState({ navFixed: !navFixed });
+    }
+  }
+
   render() {
-    const { menu } = this.state;
+    const { menu, navFixed } = this.state;
     const { pages } = this.props;
 
     return (
-      <div id="header" className={styles.headerWrapper}>
-        <header className={styles.header}>
-          <div>
-            <p></p>
-          </div>
+      <header className={styles.header}>
+        <div>
+          <p></p>
+        </div>
+        <div id={styles.nav} className={navFixed ? styles.navWrapper : null}>
           <Navigation
             pages={pages}
             toggleMenu={this.toggleMenu}
           />
-        </header>
+        </div>
         <section
           className={menu ? styles.menuOpen : styles.menuClosed}
-          id="mobile-menu"
         >
-          {menu &&
-            <ul className={styles.menu}>
-              <MenuOption
-                onClick={this.toggleMenu}
-                to="/#about"
-                active={pages.about ? styles.active : null}
-              >
-                ABOUT
-              </MenuOption>
-              <MenuOption
-                onClick={this.toggleMenu}
-                to="/#projects"
-                active={pages.projects ? styles.active : null}
-              >
-                PROJECTS
-              </MenuOption>
-              <MenuOption
-                onClick={this.toggleMenu}
-                to="/#contact"
-                active={pages.contact ? styles.active : null}
-              >
-                CONTACT
-              </MenuOption>
-              <MenuOption
-                to="/blog"
-              >
-                BLOG
-              </MenuOption>
-            </ul>
-          }
+          <ul className={styles.menu}>
+            <MenuOption
+              onClick={this.toggleMenu}
+              to="/#about"
+              active={pages.about ? styles.active : null}
+            >
+              ABOUT
+            </MenuOption>
+            <MenuOption
+              onClick={this.toggleMenu}
+              to="/#projects"
+              active={pages.projects ? styles.active : null}
+            >
+              PROJECTS
+            </MenuOption>
+            <MenuOption
+              onClick={this.toggleMenu}
+              to="/#contact"
+              active={pages.contact ? styles.active : null}
+            >
+              CONTACT
+            </MenuOption>
+            <MenuOption
+              to="/blog"
+            >
+              BLOG
+            </MenuOption>
+          </ul>
         </section>
-      </div>
+      </header>
     );
   }
 };

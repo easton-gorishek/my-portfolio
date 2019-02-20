@@ -1,54 +1,39 @@
-.headerWrapper {
-  top: -20vh;
-  position: sticky;
-}
 
 header {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-height: 30vh;
-  min-height: 30vh;
+  justify-content: flex-end;
+  height: 30vh;
   background: #272727;
 }
 
-.fixHeader {
-  position: sticky;
-  width: 100vw;
-}
-
 .menu {
-  height: 100%;
-  width: 100%;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  display: none;
 }
 
-.menu li {
-  width: 100%;
-  padding: 15px;
-  text-align: center;
-}
-
-.menu a {
-  width: 100%;
-  color: #7dce94;
-  font-size: 3em;
+.navWrapper {
+  position: fixed;
+  top: 0;
 }
 
 @media (max-width: 850px) {
-  .headerWrapper {
+
+  header {
+    height: 75px;
+  }
+
+  #nav {
     position: fixed;
-    top: -20vh;
+    height: 10vh;
+    width: 100vw;
+    top: 0;
   }
 
   .menuOpen {
+    position: fixed;
+    top: 75px;
     height: 90vh;
     width: 100vw;
-    position: fixed;
     transition: 0.5s;
     overflow-y: hidden;
     z-index: 1;
@@ -56,6 +41,8 @@ header {
   }
 
   .menuClosed {
+    position: fixed;
+    top: 75px;
     height: 0;
     width: 100vw;
     transition: 0.5s;
@@ -63,6 +50,25 @@ header {
     overflow-y: hidden;
     z-index: 1;
   }
+
+  .menu {
+    height: 100%;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .menu li {
+    width: 100vw;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .menu a {
+    color: #7dce94;
+    font-size: 3em;
+  }
 }
-
-

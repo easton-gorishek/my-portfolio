@@ -1,9 +1,9 @@
 .navigation {
+    min-height: 75px;
+    width: 100vw;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-height: 10vh;
-    min-height: 10vh;
+    justify-content: space-between;
+    align-items: center;
     background: #272727;
     color: white;
 }
@@ -13,18 +13,11 @@ h1 {
 }
 
 .desktop {
-    width: 33vw;
+    width: 40vw;
     list-style-type: none;
     display: flex;
     justify-content: space-between;
     margin-right: 5vw;
-}
-
-section {
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 li {
@@ -53,6 +46,15 @@ button {
         display: none;
     }
 
+    /* .navigation {
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #272727;
+        color: white;
+    } */
+
     button {
         display: block;
         background: none;   
@@ -61,17 +63,5 @@ button {
         padding: 0;
         color: white;
         font-size: 30px;
-    }
-
-    .menuOpen {
-        bottom: 0;
-        position: relative;
-        width: 100%;
-        background: blue;
-        overflow-y: hidden;
-    }
-
-    .menuClosed {
-        display: none;
     }
 }
