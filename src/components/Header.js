@@ -92,6 +92,7 @@ class Header extends PureComponent {
         <div id={styles.nav} className={navFixed ? styles.navWrapper : null}>
           <Navigation
             pages={pages}
+            menu={menu}
             toggleMenu={this.toggleMenu}
           />
         </div>

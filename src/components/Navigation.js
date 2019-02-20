@@ -16,7 +16,7 @@ const PageLink = props => (
 
 class Navigation extends PureComponent {
   render() {
-    const { pages, toggleMenu } = this.props;
+    const { pages, toggleMenu, menu } = this.props;
 
     return (
       <nav className={styles.navigation}>
@@ -46,7 +46,10 @@ class Navigation extends PureComponent {
             BLOG
           </PageLink>
         </ul>
-        <button onClick={toggleMenu}>&#9776;</button>
+        {menu
+          ? <button onClick={toggleMenu}>&#x2715;</button>
+          : <button onClick={toggleMenu}>&#9776;</button>
+        }
       </nav>
     );
   }
