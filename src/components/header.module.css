@@ -27,6 +27,18 @@ header {
   align-items: center;
 }
 
+.menu li {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}
+
+.menu a {
+  width: 100%;
+  color: #7dce94;
+  font-size: 3em;
+}
+
 @media (max-width: 850px) {
   .headerWrapper {
     position: fixed;
@@ -40,14 +52,14 @@ header {
     transition: 0.5s;
     overflow-y: hidden;
     z-index: 1;
-    background: lightgrey;
+    background: black;
   }
 
   .menuClosed {
     height: 0;
     width: 100vw;
     transition: 0.5s;
-    background: lightgrey;
+    background: black;
     overflow-y: hidden;
     z-index: 1;
   }
