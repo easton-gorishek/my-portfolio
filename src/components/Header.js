@@ -34,9 +34,11 @@ class Header extends PureComponent {
 
     if(menu) {
       body.style.overflowY = 'hidden';
+      body.style.position = 'relative';
     }
     else {
       body.style.overflowY = 'visible';
+      body.style.position = 'initial';
     }
   }
 
@@ -47,6 +49,7 @@ class Header extends PureComponent {
       this.setState({ menu: false });
     }
     body.style.overflowY = 'visible';
+    body.style.position = 'initial';
   }
 
   render() {
