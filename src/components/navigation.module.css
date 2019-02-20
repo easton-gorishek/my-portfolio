@@ -37,23 +37,10 @@ button {
     display: none;
 }
 
-.menuClosed {
-    display: none;
-}
-
 @media (max-width: 850px) {
     .desktop {
         display: none;
     }
-
-    /* .navigation {
-        height: 10vh;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #272727;
-        color: white;
-    } */
 
     button {
         display: block;
@@ -63,5 +50,6 @@ button {
         padding: 0;
         color: white;
         font-size: 30px;
+        cursor: pointer;
     }
 }

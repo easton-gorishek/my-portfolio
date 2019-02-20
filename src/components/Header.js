@@ -42,16 +42,10 @@ class Header extends PureComponent {
     if(menu) {
       body.style.overflowY = 'hidden';
       body.style.position = 'relative';
-      document.ontouchmove = e => {
-        e.preventDefault();
-      };
     }
     else {
       body.style.overflowY = 'visible';
       body.style.position = 'initial';
-      document.ontouchmove = e => {
-        return true;
-      };
     }
   }
 
@@ -104,7 +98,7 @@ class Header extends PureComponent {
         <section
           className={menu ? styles.menuOpen : styles.menuClosed}
         >
-          <ul className={styles.menu}>
+          <ul className={styles.menuOptions}>
             <MenuOption
               onClick={this.toggleMenu}
               to="/#about"
