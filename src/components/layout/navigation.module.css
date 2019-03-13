@@ -4,12 +4,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #272727;
-    color: white;
+    background: #18121E;
 }
 
 h1 {
+    font-family: 'Nunito', san-serif;
     margin-left: 5vw;
+    font-size: 1.25em;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
 }
 
 .desktop {
@@ -25,15 +29,17 @@ li {
 }
 
 a {
+    font-family: 'Nunito', san-serif;
     text-decoration: none;
-    color: white;
+    color: #F4F4F4;
+    font-weight: lighter;
 }
 
 .active {
-    color: #7dce94;
+    border-bottom: 1px solid #EAC67A;
 }
 
-button {
+.mobileMenu {
     display: none;
 }
 
@@ -42,13 +48,13 @@ button {
         display: none;
     }
 
-    button {
+    .mobileMenu {
         display: block;
         background: none;   
         border: none;
         margin-right: 5vw;
         padding: 0;
-        color: white;
+        color:#F4F4F4;
         font-size: 30px;
         cursor: pointer;
     }

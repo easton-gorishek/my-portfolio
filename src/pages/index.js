@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import './index.module.css';
 
-import Layout from '../components/Layout.js';
-import About from '../components/About.js';
-import Projects from '../components/Projects.js';
-import Contact from '../components/Contact.js';
+import Layout from '../components/layout/Layout.js';
+import About from '../components/sections/About.js';
+import Projects from '../components/sections/Projects.js';
+import Contact from '../components/sections/Contact.js';
 
 class Index extends PureComponent {
   render() {

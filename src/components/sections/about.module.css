@@ -1,15 +1,16 @@
-.projects {
-  height: 100vh;
+.about {
+  min-height: 100vh;
   width: 100wh;
   background: #f9f8fd;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4em;
-  background: lightpink;
 }
 
-.projects p {
+.about p {
   text-align: center;
+  font-size: 1.5em;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.1em;
 }

@@ -86,9 +86,6 @@ class Header extends PureComponent {
 
     return (
       <header className={styles.header}>
-        <div>
-          <p></p>
-        </div>
         <div id={styles.nav} className={navFixed ? styles.navWrapper : null}>
           <Navigation
             pages={pages}
@@ -97,7 +94,9 @@ class Header extends PureComponent {
           />
         </div>
         <section
-          className={menu ? styles.menuOpen : styles.menuClosed}
+          className={menu
+            ? styles.menuOpen
+            : styles.menuClosed}
         >
           <ul className={styles.menuOptions}>
             <MenuOption

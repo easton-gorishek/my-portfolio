@@ -20,7 +20,7 @@ class Navigation extends PureComponent {
 
     return (
       <nav className={styles.navigation}>
-        <h1>Easton Gorishek</h1>
+        <h1>EASTON GORISHEK</h1>
         <ul className={styles.desktop}>
           <PageLink
             to="/#about"
@@ -47,8 +47,12 @@ class Navigation extends PureComponent {
           </PageLink>
         </ul>
         {menu
-          ? <button onClick={toggleMenu}>&#x2715;</button>
-          : <button onClick={toggleMenu}>&#9776;</button>
+          ? <button
+            className={styles.mobileMenu}
+            onClick={toggleMenu}>&#x2715;</button>
+          : <button
+            className={styles.mobileMenu}
+            onClick={toggleMenu}>&#9776;</button>
         }
       </nav>
     );
