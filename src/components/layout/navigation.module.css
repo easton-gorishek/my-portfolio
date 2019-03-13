@@ -1,5 +1,5 @@
 .navigation {
-    min-height: 75px;
+    height: 75px;
     width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -10,7 +10,7 @@
 h1 {
     font-family: 'Nunito', san-serif;
     margin-left: 5vw;
-    font-size: 1.25em;
+    font-size: 1.5em;
     font-weight: 100;
     letter-spacing: 0.1em;
     color: #F4F4F4;

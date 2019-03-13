@@ -3,7 +3,7 @@
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
-  padding-top: 20vh;
+  padding-top: 13vh;
   background: #18121E;
 }
 
@@ -32,12 +32,6 @@
   color: #f9f8fd;
   font-size: 1.25em;
 }
-
-/* .projects > ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-} */
 
 .active {
   background: #984B43;
