@@ -82,7 +82,7 @@ img {
 
   .title {
     display: block;
-    color: #EAC67A;
+    color: #f4f4f4;
     font-family: 'Nunito', san-serif;
     margin: 15px 0 15px 0;
   }
@@ -106,6 +106,6 @@ img {
   }
 
   .tech p {
-    color: #984B43;
+    color: #EAC67A;
   }
 }
