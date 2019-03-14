@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #000000;
 }
 
 img {
@@ -30,7 +31,8 @@ img {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid #EAC67A;
+  border-top: 1px solid #EAC67A;
+  border-bottom: 1px solid #EAC67A;
 }
 
 .tech p {
@@ -45,7 +47,8 @@ img {
   margin-top: 1em;
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid #EAC67A;
+  border-top: 1px solid #EAC67A;
+  border-bottom: 1px solid #EAC67A;
 }
 
 .links a {
@@ -68,6 +71,7 @@ img {
     border-top: 1px solid #f4f4f4;
     border-bottom: 1px solid #f4f4f4;
     border-radius: 10px;
+    background: #000000;
   }
   .hide {
     max-width: 90vw;
@@ -78,6 +82,7 @@ img {
     border-top: 1px solid #f4f4f4;
     border-bottom: 1px solid #f4f4f4;
     border-radius: 10px;
+    background: #000000;
   }
 
   .title {

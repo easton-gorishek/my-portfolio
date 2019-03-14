@@ -3,8 +3,20 @@
   width: 100wh;
   background: #f9f8fd;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.about h1 {
+  font-family: 'Nunito', san-serif;
+  font-size: 3em;
+}
+
+.about ul {
+  list-style: none;
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 .about p {
