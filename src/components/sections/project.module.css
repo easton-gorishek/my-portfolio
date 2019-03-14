@@ -28,7 +28,7 @@ img {
 }
 
 .tech {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: space-evenly;
   border-top: 1px solid #EAC67A;
@@ -37,7 +37,7 @@ img {
 
 .tech p {
   color: #EAC67A;
-  font-size: 1.25em;
+  font-size: 1.10em;
   font-family: 'Nunito', san-serif;
   margin: 10px;
 }
@@ -46,6 +46,7 @@ img {
   width: 100%;
   margin-top: 1em;
   display: flex;
+  flex-wrap: row;
   justify-content: space-evenly;
   border-top: 1px solid #EAC67A;
   border-bottom: 1px solid #EAC67A;
