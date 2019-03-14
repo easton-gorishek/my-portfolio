@@ -11,7 +11,16 @@ import {
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import Header from './Header.js';
 import Footer from './Footer.js';
-library.add(fab, faEnvelope, faDesktop, faCoffee, faCode, faGlobeAmericas, faArrowDown);
+
+library.add(
+  fab,
+  faEnvelope,
+  faDesktop,
+  faCoffee,
+  faCode,
+  faGlobeAmericas,
+  faArrowDown
+);
 
 class Layout extends PureComponent {
   state = {
