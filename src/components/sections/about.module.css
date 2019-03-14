@@ -4,24 +4,81 @@
   background: #f9f8fd;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-.about h1 {
-  font-family: 'Nunito', san-serif;
-  font-size: 3em;
+.intro {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro p {
+  font-size: 4em;
 }
 
 .about ul {
+  height: 30vh; 
   list-style: none;
   font-family: 'Open Sans', sans-serif;
-
+  font-size: 2em;
+  letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-.about p {
-  text-align: center;
-  font-size: 1.5em;
+.welcome {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.welcomeText {
+  font-size: 4em;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.1em;
 }
+
+.peek {
+  font-size: 2em;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.downArrow {
+  font-size: 3em;
+  color: #984B43;
+}
+
+@media (max-width: 850px) {
+
+  .intro {
+    margin-top: 100px;
+  }
+
+  .intro p {
+    font-size: 2.25em;
+  }
+
+  .about ul {
+    font-size: 1.5em;
+  }
+
+  .welcomeText {
+    font-size: 1.75em;
+  }
+
+  .peek {
+    font-size: 2em;
+  }
+
+  .downArrow {
+    font-size: 4em;
+  }
+}
+

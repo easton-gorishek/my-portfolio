@@ -1,11 +1,17 @@
 import React, { PureComponent } from 'react';
 import styles from './layout.module.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faDesktop, faCoffee } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEnvelope,
+  faDesktop,
+  faCoffee,
+  faCode,
+  faGlobeAmericas,
+  faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import Header from './Header.js';
 import Footer from './Footer.js';
-library.add(fab, faEnvelope, faDesktop, faCoffee);
+library.add(fab, faEnvelope, faDesktop, faCoffee, faCode, faGlobeAmericas, faArrowDown);
 
 class Layout extends PureComponent {
   state = {

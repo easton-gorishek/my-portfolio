@@ -23,7 +23,7 @@ img {
   font-size: 1.25em;
   letter-spacing: 0.1em;
   margin: 0.5em;
-  color: #f4f4f4;
+  color: #f9f8fd;
   text-align: center;
 }
 
@@ -68,8 +68,8 @@ img {
     margin: auto;
     margin-bottom: 13vh;
     background: #18121E;
-    border-top: 1px solid #f4f4f4;
-    border-bottom: 1px solid #f4f4f4;
+    border-top: 1px solid #f9f8fd;
+    border-bottom: 1px solid #f9f8fd;
     border-radius: 10px;
     background: #000000;
   }
@@ -79,15 +79,15 @@ img {
     flex-direction: column;
     align-items: center;
     margin-bottom: 13vh;
-    border-top: 1px solid #f4f4f4;
-    border-bottom: 1px solid #f4f4f4;
+    border-top: 1px solid #f9f8fd;
+    border-bottom: 1px solid #f9f8fd;
     border-radius: 10px;
     background: #000000;
   }
 
   .title {
     display: block;
-    color: #f4f4f4;
+    color: #f9f8fd;
     font-family: 'Nunito', san-serif;
     margin: 15px 0 15px 0;
   }
