@@ -14,7 +14,7 @@ export default props => (
     </section>
     <section className={styles.welcome}>
       <p className={styles.welcomeText}>Welcome to my page.</p>
-      <p className={styles.peek}>Take a peek.</p>
+      {/* <p className={styles.peek}>Take a peek.</p> */}
       <p className={styles.downArrow}><FontAwesomeIcon icon='arrow-down' /></p>
     </section>
   </div>
