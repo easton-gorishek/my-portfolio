@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styles from './layout.module.css';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library, config } from '@fortawesome/fontawesome-svg-core';
 import {
   faEnvelope,
   faDesktop,
@@ -9,8 +9,11 @@ import {
   faGlobeAmericas,
   faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import Header from './Header.js';
 import Footer from './Footer.js';
+
+config.autoAddCss = false;
 
 library.add(
   fab,
