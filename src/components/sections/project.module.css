@@ -28,7 +28,7 @@ img {
 }
 
 .tech {
-  max-width: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   border-top: 1px solid #EAC67A;
