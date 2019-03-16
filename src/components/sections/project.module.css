@@ -61,6 +61,7 @@ img {
 
 .links a:hover {
   color: #984B43;
+  border-color: #984B43;
 }
 
 @media (max-width: 850px) {
