@@ -6,7 +6,7 @@ const PageLink = props => (
   <li className={props.active}>
     <Link
       to={props.to}
-      activeStyle={{ color: '#7dce94' }}
+      replace
       className={props.active}
     >
       {props.children}
@@ -40,11 +40,12 @@ class Navigation extends PureComponent {
           >
             CONTACT
           </PageLink>
-          <PageLink
+          <Link
             to="/blog"
+            activeStyle={{ borderBottom: '1px solid #EAC67A' }}
           >
             BLOG
-          </PageLink>
+          </Link>
         </ul>
         {menu
           ? <button

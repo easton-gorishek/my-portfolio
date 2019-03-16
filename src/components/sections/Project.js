@@ -18,8 +18,17 @@ export default props => {
       <p className={styles.projectDescription}>{project.description}</p>
       <img src={project.image.file.url}/>
       <section className={styles.links}>
-        <a href={project.github}><FontAwesomeIcon className={styles.icons} icon={['fab', 'github']} /> GITHUB</a>
-        <a href={project.website}><FontAwesomeIcon className={styles.icons} icon='desktop' /> WEBSITE</a>
+        <a
+          target='_blank'
+          href={project.github}>
+          <FontAwesomeIcon className={styles.icons} icon={['fab', 'github']} />
+          GITHUB
+        </a>
+        <a
+          target='_blank'
+          href={project.website}><FontAwesomeIcon className={styles.icons} icon='desktop' />
+          WEBSITE
+        </a>
       </section>
     </section>
   );
