@@ -30,6 +30,7 @@ img {
 .tech {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   border-top: 1px solid #EAC67A;
   border-bottom: 1px solid #EAC67A;
@@ -91,6 +92,7 @@ img {
     color: #f9f8fd;
     font-family: 'Nunito', san-serif;
     margin: 15px 0 15px 0;
+    font-size: 1.25em;
   }
 
   .links {
