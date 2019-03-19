@@ -2,24 +2,44 @@
   height: 100vh;
   width: 100wh;
   background: #f9f8fd;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  font-family: 'Nunito', san-serif;
+  font-family: 'Nunito', san-serif; 
+}
+
+.contact section {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .contact p {
   font-size: 2.5em;
+  margin-bottom: 2em;
+
 }
 
 .icons {
-  font-size: 3.5em;
+  font-size: 4em;
   color: #EAC67A;
 }
 
 .contact a {
   cursor: pointer;
+}
+
+@media (max-width: 850px) {
+
+  .contact p {
+    margin: initial;
+  }
+  
+  .contact section {
+    flex-direction: column;
+    align-items: center;
+    height: 55vh;
+  }
 }
 
