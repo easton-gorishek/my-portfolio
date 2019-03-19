@@ -19,7 +19,7 @@ class Navigation extends PureComponent {
 
     return (
       <nav className={styles.navigation}>
-        <h1>EASTON GORISHEK</h1>
+        <Link to='/'><h1>EASTON GORISHEK</h1></Link>
         <ul className={styles.desktop}>
           <PageLink
             to="/#about"
