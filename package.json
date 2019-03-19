@@ -16,7 +16,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "dotenv": "^7.0.0",
     "gatsby": "^2.0.112",
     "gatsby-cli": "^2.4.14",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.0",
