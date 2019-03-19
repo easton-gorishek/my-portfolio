@@ -6,7 +6,6 @@ const PageLink = props => (
   <li className={props.active}>
     <Link
       to={props.to}
-      replace
       className={props.active}
     >
       {props.children}

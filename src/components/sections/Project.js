@@ -21,13 +21,11 @@ export default props => {
         <a
           target='_blank'
           href={project.github}>
-          <FontAwesomeIcon className={styles.icons} icon={['fab', 'github']} />
-          GITHUB
+          <FontAwesomeIcon className={styles.icons} icon={['fab', 'github']} /> GITHUB
         </a>
         <a
           target='_blank'
-          href={project.website}><FontAwesomeIcon className={styles.icons} icon='desktop' />
-          WEBSITE
+          href={project.website}><FontAwesomeIcon className={styles.icons} icon='desktop' /> WEBSITE
         </a>
       </section>
     </section>

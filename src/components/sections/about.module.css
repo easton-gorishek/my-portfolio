@@ -12,15 +12,15 @@
 }
 
 #softwareEngineer {
-  color: #EAC67A;
+  color:#f9f8fd;
 }
 
-#traveler {
-  color: #f9f8fd;
+#and {
+  color:#191919;
 }
 
 #coffee {
-  color: #191919;
+  color:#f9f8fd;;
 }
 
 .about ul {
@@ -28,7 +28,7 @@
   height: 40vh; 
   list-style: none;
   font-family: 'Open Sans', sans-serif;
-  font-size: 3em;
+  font-size: 2.25em;
   letter-spacing: 0.1em;
   display: flex;
   flex-direction: column;
