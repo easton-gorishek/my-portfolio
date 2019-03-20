@@ -13,11 +13,12 @@ h3 {
   text-align: center;
   align-self: center;
   font-size: 1.75em;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.20em;
   width: 100%;
   border-top: 1px solid #EAC67A;
   border-bottom: 1px solid #EAC67A;
   padding: 0.2em 0 0.2em 0;
+  font-weight: 100;
 }
 
 .projectsList {
