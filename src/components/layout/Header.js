@@ -101,21 +101,21 @@ class Header extends PureComponent {
           <ul className={styles.menuOptions}>
             <MenuOption
               onClick={this.toggleMenu}
-              to="#about"
+              to="/#about"
               active={pages.about ? styles.active : null}
             >
               ABOUT
             </MenuOption>
             <MenuOption
               onClick={this.toggleMenu}
-              to="#projects"
+              to="/#projects"
               active={pages.projects ? styles.active : null}
             >
               PROJECTS
             </MenuOption>
             <MenuOption
               onClick={this.toggleMenu}
-              to="#contact"
+              to="/#contact"
               active={pages.contact ? styles.active : null}
             >
               CONTACT
