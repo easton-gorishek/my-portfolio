@@ -7,16 +7,26 @@
   background: #191919;
 }
 
+h3 {
+  font-family: 'Nunito', san-serif;
+  color: #EAC67A;
+  text-align: center;
+  align-self: center;
+  font-size: 1.75em;
+  letter-spacing: 0.25em;
+  width: 100%;
+  border-top: 1px solid #EAC67A;
+  border-bottom: 1px solid #EAC67A;
+  padding: 0.2em 0 0.2em 0;
+}
+
 .projectsList {
   height: 100%;
   width: 20vw;
   list-style: none;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #EAC67A;
   border-bottom: 1px solid #EAC67A;
-  padding-top: 1.5vh;
-  padding-bottom: 1.5vh;
   background: #000000;
 }
 

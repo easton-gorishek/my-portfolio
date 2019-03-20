@@ -29,6 +29,7 @@ export default props => {
   return (
     <div className={styles.projects} id={props.id}>
       <ul className={styles.projectsList}>
+        <h3>PROJECTS</h3>
         {allContentfulProjects.edges.map((project, i) => (
           <li
             onClick={() => setActiveProject(project.node.title)}
